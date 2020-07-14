@@ -20,10 +20,14 @@ export default function BlogPosts() {
    * Updates the pagination and increases the number of posts
    */
   const updatePagination = async () => {
-    const toFindIds = postIds.splice(availablePosts.length, availablePosts.length + PAGINATION_SIZE);
+    // Get the next 30 elements in the array and query for them
+    const toFindIds = postIds.slice(availablePosts.length, availablePosts.length + PAGINATION_SIZE);
     const foundPosts = await getMultiplePosts(toFindIds);
 
-    setAvailablePosts(...availablePosts, foundPosts);
+    // If we found some posts update it
+    if (foundPosts != null && foundPosts.length > 0) {
+      setAvailablePosts(availablePosts => availablePosts.concat(foundPosts));
+    }
   }
 
   /**
