@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { BlogPost } from './BlogPost';
 import { getNewPostIds, getMultiplePosts } from '../services/HackerNewsAPI';
-import { GlobalStyle, BlogPostsWrapper } from '../styles/BlogPostsStyles';
+import { BlogPostsWrapper } from '../styles/BlogPostsStyles';
 import SearchPosts from './SearchPosts';
 import { PAGINATION_SIZE } from '../constants/index';
 
@@ -20,8 +20,9 @@ export default function BlogPosts() {
    * Updates the pagination and increases the number of posts
    */
   const updatePagination = async () => {
-    // Get the next 30 elements in the array and query for them
-    const toFindIds = postIds.slice(availablePosts.length, availablePosts.length + PAGINATION_SIZE);
+    // Get the next 30 elements in the array and query for them.
+    // Since we have the posts elsewhere we don't need them so splice works here
+    const toFindIds = postIds.splice(0, PAGINATION_SIZE);
     const foundPosts = await getMultiplePosts(toFindIds);
 
     // If we found some posts update it
@@ -50,8 +51,11 @@ export default function BlogPosts() {
     }
   }
 
+  // Reference to the last element in the list
   const refObserver = useRef()
 
+  // If we see that last element in the list, add more to the
+  // list of posts
   const lastPostRef = useCallback(node => {
     if (refObserver.current) refObserver.current.disconnect();
     refObserver.current = new IntersectionObserver(entries => {
@@ -81,7 +85,6 @@ export default function BlogPosts() {
   }, []);
 
   return <div>
-    <GlobalStyle />
     <BlogPostsWrapper>
       <h1>Blog Posts</h1>
       <SearchPosts filter={filter} handleFilter={handleFilter} />

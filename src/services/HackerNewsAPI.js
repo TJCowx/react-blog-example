@@ -15,6 +15,11 @@ export const getNewPostIds = async () => {
 /** Gets an individual story from the hacker news API */
 export const getPost = async (postId) => {
   const postRes = await axios.get(`${postUrl}${postId}.json`);
+
+  if (postRes == null || postRes.data == null) {
+    return null;
+  }
+
   getImageUrl(postRes.data.url).then((res) => {
     postRes.data.imgUrl = res;
   })
@@ -33,7 +38,9 @@ export const getMultiplePosts = async (postIds) => {
 
   for (let i = 0; i < postIds.length; i++) {
     const foundPost = await getPost(postIds[i]);
-    foundPosts.push(foundPost);
+    if (foundPost != null) {
+      foundPosts.push(foundPost);
+    }
   }
 
   return foundPosts;
@@ -44,21 +51,18 @@ export const getMultiplePosts = async (postIds) => {
  * @param {*} postUrl The post URL to try and get an image from
  */
 export const getImageUrl = async (postUrl) => {
-  const DEFAULT_IMAGE = 'https://via.placeholder.com/150?Text=NotFound';
-  return DEFAULT_IMAGE;
   if (postUrl != null && postUrl.length > 0) {
     try {
       const imageMetadata = await grabity.grabIt(postUrl);
-      if (imageMetadata != null && imageMetadata.image != null) {
+      if (imageMetadata != null && imageMetadata.image != null && imageMetadata.image.length > 0) {
         return imageMetadata.image;
       } else {
-        return DEFAULT_IMAGE;
+        return null;
       }
     } catch (e) {
-      console.warn('HELLO WORLD')
-      return DEFAULT_IMAGE;
+      return null;
     }
   } else {
-    return DEFAULT_IMAGE
+    return null
   }
 }

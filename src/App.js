@@ -3,6 +3,7 @@ import './App.css';
 import BlogPosts from './components/BlogPosts';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { GlobalStyle } from './styles/GlobalStyle';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +29,7 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
+      <GlobalStyle />
       <BlogPosts />
     </div>
   );

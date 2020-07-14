@@ -6,7 +6,7 @@ export default function SearchPosts({ filter, handleFilter }) {
 
   return <>
     <SearchFieldWrapper>
-      <TextField label="Filter" value={filter} onChange={handleFilter} />
+      <TextField label="Filter Posts" value={filter} onChange={handleFilter} />
     </SearchFieldWrapper>
   </>
 }

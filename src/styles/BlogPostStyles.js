@@ -9,6 +9,9 @@ export const BlogPostWrapper = styled.div`
 
 export const PostImage = styled.div`
   float: left;
+  img {
+    max-width: 150px;
+  }
 `;
 
 export const PostDescription = styled.div`
