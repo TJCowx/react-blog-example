@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { BlogPost } from './BlogPost';
 import { getNewPostIds, getMultiplePosts } from '../../services/HackerNewsAPI';
-import { BlogPostsWrapper } from '../../styles/BlogPostsStyles';
+import { BlogPostsWrapper, LoadMore } from '../../styles/BlogPostsStyles';
 import SearchPosts from '../search-post/SearchPosts';
 import SubmitPost from '../submit-post/SubmitPost';
 import { PAGINATION_SIZE } from '../../constants/index';
@@ -92,15 +92,12 @@ export default function BlogPosts() {
       <SubmitPost />
       <ul>
         {filteredPosts.map((post, index) => {
-          if (filteredPosts.length === index + 1) {
-            // We only want the ref on the last element
-            return <section key={post.id} ref={lastPostRef}><BlogPost post={post} /></section>
-          } else {
-            return <BlogPost key={post.id} post={post} />
-          }
-
+          return <BlogPost key={post.id} post={post} />
         })}
       </ul>
+      <LoadMore>
+        <span ref={lastPostRef}>More Posts</span>
+      </LoadMore>
     </BlogPostsWrapper>
   </div>;
 }

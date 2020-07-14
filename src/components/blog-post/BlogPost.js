@@ -13,7 +13,13 @@ export const BlogPost = memo(function BlogPost({ post }) {
   const [imageUrl, setImageUrl] = useState(PLACEHOLDER_IMAGE);
 
   useEffect(() => {
-    getImageUrl(post.url).then(imgUrl => { setImageUrl(imgUrl) })
+    getImageUrl(post.url).then(imgUrl => {
+      if (imgUrl == null || imgUrl.length === 0) {
+        setImageUrl(PLACEHOLDER_IMAGE);
+      } else {
+        setImageUrl(imgUrl);
+      }
+    })
     return () => { }
   }, [])
 
