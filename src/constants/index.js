@@ -1,1 +1,1 @@
-const PAGINATION_SIZE = 30;
+export const PAGINATION_SIZE = 30;

@@ -8,14 +8,7 @@ import { getPost } from '../services/HackerNewsAPI';
 import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostDescription, PostUrl } from '../styles/BlogPostStyles';
 import { convertUnixTime } from '../utils/convertUnixTime';
 
-export const BlogPost = memo(function BlogPost({ postId }) {
-  const [post, setPost] = useState([]);
-
-  useEffect(() => {
-    // Get the information required for this post
-    getPost(postId).then(res => setPost(res));
-  })
-
+export const BlogPost = memo(function BlogPost({ post }) {
 
   return <BlogPostWrapper>
     <PostImage>

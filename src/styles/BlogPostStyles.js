@@ -5,15 +5,6 @@ export const BlogPostWrapper = styled.div`
   margin-bottom: 20px;
   border-top: 1px solid #cccccc;
   display: flex;
-
-  &:first-of-type {
-    border-top: 0;
-  }
-
-  &:last-of-type {
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
 `;
 
 export const PostImage = styled.div`
