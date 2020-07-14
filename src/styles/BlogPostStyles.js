@@ -7,27 +7,65 @@ export const BlogPostWrapper = styled.div`
   display: flex;
   max-width: 100%;
   flex-wrap: wrap;
+
+  heigh: initial;
+  justify-content: flex-start;
+
+  @media (min-width: 768px) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 `;
 
 export const PostImage = styled.div`
   float: left;
-  display: flex
-  img {
-    max-width: 150px;
+  min-height: initial;
+  
+  @media (min-width: 768px) {
+    margin-left: 0px;
+    max-width: 33.3333%;
+
+    img {
+      max-width: 100%
+    }
+  }
+
+  @media (max-width: 767px)  {
+    padding-left: 0px;
+    padding-right: 0px;
+    img {
+      max-width: 100%
+    }
   }
 `;
 
 export const PostDescription = styled.div`
-  display: flex
+  display: flex;
+  min-height: initial;
   float: right;
-  margin-left: 1%;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    margin-left: 4.16667%;
+    width: 62.5%;
+  }
+
+  @media (min-width: 768px) {
+    margin-left: 4.16667%;
+    width: 62.5%;
+  }
+
+  @media (max-width: 767px) {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 `;
 
 export const PostTitle = styled.h2`
-  margin-bottom: 5px;
+  margin-bottom: 1rem;
   line-height: 1.5;
   font-weight: 400;
-  margin: 0;
   text-decoration: none;
   font-family: SofiaProWeb, Helvetica, Arial, sans-serif;
 
@@ -51,14 +89,15 @@ export const PostTitle = styled.h2`
 
 export const PostInfo = styled.div`
   font-style: italic;
+  line-height: 1.5;
 
-  > span:not(:first-child):before {
-    content: '•';
-    margin: 0 8px;
+  span {
+    display: inline-block;
   }
 
-  .post__info-bold {
-    font-weight: bold;
+  > span:not(:last-child):after {
+    content: '•';
+    margin: 0 8px;
   }
 `;
 
@@ -70,14 +109,16 @@ export const PostInfoElement = styled.span`
 export const PostUrl = styled.div`
   margin-top: 2rem;
   padding-top: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.125em;
+  font-family: SofiaProWeb, Helvetica, Arial, sans-serif;
+  line-height: 1;
+
   a {
     color: #000;
     text-decoration: none;
     border-bottom: 0.125rem solid;
-    line-height: 1;
-    letter-spacing: 0.125em;
-    font-weight: 600;
-    font-family: "SofiaProWeb", Helvetica, Arial, sans-serif;
   }
 
 `;

@@ -3,6 +3,7 @@ import { BlogPost } from './BlogPost';
 import { getNewPostIds, getMultiplePosts } from '../../services/HackerNewsAPI';
 import { BlogPostsWrapper } from '../../styles/BlogPostsStyles';
 import SearchPosts from '../search-post/SearchPosts';
+import SubmitPost from '../submit-post/SubmitPost';
 import { PAGINATION_SIZE } from '../../constants/index';
 
 export default function BlogPosts() {
@@ -88,6 +89,7 @@ export default function BlogPosts() {
     <BlogPostsWrapper>
       <h1>Blog Posts</h1>
       <SearchPosts filter={filter} handleFilter={handleFilter} />
+      <SubmitPost />
       <ul>
         {filteredPosts.map((post, index) => {
           if (filteredPosts.length === index + 1) {
