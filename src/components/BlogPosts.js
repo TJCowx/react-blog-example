@@ -3,6 +3,7 @@ import { BlogPost } from './BlogPost';
 import { getNewPostIds } from '../services/HackerNewsAPI';
 import { GlobalStyle, BlogPostsWrapper } from '../styles/BlogPostsStyles';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
+import SearchPosts from './SearchPosts';
 
 export default function BlogPosts() {
   const { count } = useInfiniteScroll();
@@ -16,6 +17,7 @@ export default function BlogPosts() {
   return <div>
     <GlobalStyle />
     <BlogPostsWrapper>
+      <SearchPosts />
       <h1>BLOG</h1>
       <ul>
         {postIds.slice(0, 5).map(postId => {
