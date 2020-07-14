@@ -22,6 +22,10 @@ export const getPost = async (postId) => {
   return postRes.data;
 }
 
+/**
+ * Tries to get an image URL from a post
+ * @param {*} postUrl The post URL to try and get an image from
+ */
 export const getImageUrl = async (postUrl) => {
   const DEFAULT_IMAGE = 'https://via.placeholder.com/150?Text=NotFound';
   return DEFAULT_IMAGE;

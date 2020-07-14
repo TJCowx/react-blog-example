@@ -3,10 +3,12 @@
  * Handles the displaying of an individual blog post
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { getPost } from '../services/HackerNewsAPI';
+import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostDescription } from '../styles/BlogPostStyles';
+import { convertUnixTime } from '../utils/convertUnixTime';
 
-export default function BlogPost({ postId }) {
+export const BlogPost = memo(function BlogPost({ postId }) {
   const [post, setPost] = useState([]);
 
   useEffect(() => {
@@ -15,10 +17,23 @@ export default function BlogPost({ postId }) {
   })
 
 
-  return <div>
-    <img src={post.imgUrl}></img>
-    <h3>{post.title}</h3>
-    <h5>By: {post.by}</h5>
-    <a href={post.url}>See Article</a>
-  </div>;
-}
+  return <BlogPostWrapper>
+    <PostImage>
+      <img src={post.imgUrl}></img>
+    </PostImage>
+    <PostDescription>
+      <PostTitle>
+        <a href={post.url}>{post.title}</a>
+      </PostTitle>
+      <PostInfo>
+        <span>
+          <PostInfoElement>By:</PostInfoElement> {post.by}
+        </span>
+        <span>
+          <PostInfoElement>Posted:</PostInfoElement>
+          {convertUnixTime(post.time)}
+        </span>
+      </PostInfo>
+    </PostDescription>
+  </BlogPostWrapper>;
+});

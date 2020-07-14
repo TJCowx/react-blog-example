@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import BlogPost from './BlogPost';
-import { getNewPostIds, getImageUrl } from '../services/HackerNewsAPI';
+import { BlogPost } from './BlogPost';
+import { getNewPostIds } from '../services/HackerNewsAPI';
+import { GlobalStyle, BlogPostsWrapper } from '../styles/BlogPostsStyles';
+import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 
 export default function BlogPosts() {
+  const { count } = useInfiniteScroll();
   const [postIds, setPostIds] = useState([]);
-  const [viewablePostIds, setViewablePostIds] = useState([]);
-
-  const PAGINATION_SIZE = 5;
-
 
   useEffect(() => {
-    getNewPostIds().then(res => {
-      // Set all the story IDs that we have retrieved.
-      setPostIds(res)
-
-      // Get the first 30 story ids and query for them.
-      setViewablePostIds(res.slice(0, PAGINATION_SIZE));
-    });
+    console.log(count);
+    getNewPostIds().then(res => setPostIds(res));
   }, []);
 
   return <div>
-    <h1>BLOG</h1>
-    <ul>
-      {viewablePostIds.map(postId => {
-        return <BlogPost key={postId} postId={postId} />
-      })}
-    </ul>
+    <GlobalStyle />
+    <BlogPostsWrapper>
+      <h1>BLOG</h1>
+      <ul>
+        {postIds.slice(0, 5).map(postId => {
+          return <BlogPost key={postId} postId={postId} />
+        })}
+      </ul>
+    </BlogPostsWrapper>
   </div>;
 }
