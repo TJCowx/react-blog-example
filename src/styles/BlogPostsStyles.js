@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
       line-height: 1;
       color: #202020;
       background-color: #fafafe;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "SofiaProWeb", Helvetica, Arial, sans-serif;
       font-size: 16px;
     }
 
@@ -29,7 +29,8 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const BlogPostsWrapper = styled.main`
-  max-width: 100%;
   padding: 20px 15px;
   margin: auto;
+  margin-left: 8.33333%;
+width: 83.3333%;
 `;

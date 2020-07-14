@@ -5,7 +5,7 @@
 
 import React, { useEffect, useState, memo } from 'react';
 import { getPost } from '../services/HackerNewsAPI';
-import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostDescription } from '../styles/BlogPostStyles';
+import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostDescription, PostUrl } from '../styles/BlogPostStyles';
 import { convertUnixTime } from '../utils/convertUnixTime';
 
 export const BlogPost = memo(function BlogPost({ postId }) {
@@ -34,6 +34,11 @@ export const BlogPost = memo(function BlogPost({ postId }) {
           {convertUnixTime(post.time)}
         </span>
       </PostInfo>
+      <PostUrl>
+        <span>
+          <a href={post.url}>READ THIS ARTICLE</a>
+        </span>
+      </PostUrl>
     </PostDescription>
   </BlogPostWrapper>;
 });

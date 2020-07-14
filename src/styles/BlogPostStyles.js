@@ -27,14 +27,13 @@ export const PostDescription = styled.div`
 
 export const PostTitle = styled.h1`
   margin-bottom: 5px;
-  font-size: 18px;
+  font-size: calc(-20.5898px + 1rem + 1.42985vw);
   line-height: 1.8;
   margin: 0;
   text-decoration: none;
 
   a {
-    color: #2e2e2c;
-    background-color: #f8dc3d;
+    color: #000;
     text-decoration: none;
   }
 `;
@@ -55,4 +54,19 @@ export const PostInfo = styled.div`
 export const PostInfoElement = styled.span`
   font-weight: bold;
   color: ${props => props.color || '#000'};
+`;
+
+export const PostUrl = styled.div`
+  margin-top: 2rem;
+  padding-top: 8px;
+  a {
+    color: #000;
+    text-decoration: none;
+    border-bottom: 0.125rem solid;
+    line-height: 1;
+    letter-spacing: 0.125em;
+    font-weight: 600;
+    font-family: "SofiaProWeb", Helvetica, Arial, sans-serif;
+  }
+
 `;
