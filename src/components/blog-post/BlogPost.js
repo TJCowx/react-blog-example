@@ -4,9 +4,9 @@
  */
 
 import React, { memo } from 'react';
-import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostDescription, PostUrl } from '../styles/BlogPostStyles';
-import { convertUnixTime } from '../utils/convertUnixTime';
-import { PLACEHOLDER_IMAGE } from '../constants/index';
+import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostDescription, PostUrl } from '../../styles/BlogPostStyles';
+import { convertUnixTime } from '../../utils/convertUnixTime';
+import { PLACEHOLDER_IMAGE } from '../../constants/index';
 
 export const BlogPost = memo(function BlogPost({ post }) {
 

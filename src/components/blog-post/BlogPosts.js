@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { BlogPost } from './BlogPost';
-import { getNewPostIds, getMultiplePosts } from '../services/HackerNewsAPI';
-import { BlogPostsWrapper } from '../styles/BlogPostsStyles';
-import SearchPosts from './SearchPosts';
-import { PAGINATION_SIZE } from '../constants/index';
+import { getNewPostIds, getMultiplePosts } from '../../services/HackerNewsAPI';
+import { BlogPostsWrapper } from '../../styles/BlogPostsStyles';
+import SearchPosts from '../search-post/SearchPosts';
+import { PAGINATION_SIZE } from '../../constants/index';
 
 export default function BlogPosts() {
   const [postIds, setPostIds] = useState([]);

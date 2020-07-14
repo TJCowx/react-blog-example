@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import BlogPosts from './components/BlogPosts';
+import BlogPosts from './components/blog-post/BlogPosts';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { GlobalStyle } from './styles/GlobalStyle';
