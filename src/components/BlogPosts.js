@@ -8,6 +8,12 @@ import SearchPosts from './SearchPosts';
 export default function BlogPosts() {
   const { count } = useInfiniteScroll();
   const [postIds, setPostIds] = useState([]);
+  const [filter, setFilter] = useState([]);
+
+  const handleFilter = (event) => {
+    setFilter(event.target.value);
+  };
+
 
   useEffect(() => {
     console.log(count);
@@ -17,8 +23,8 @@ export default function BlogPosts() {
   return <div>
     <GlobalStyle />
     <BlogPostsWrapper>
-      <SearchPosts />
-      <h1>BLOG</h1>
+      <h1>Blog Posts</h1>
+      <SearchPosts filter={filter} handleFilter={handleFilter} />
       <ul>
         {postIds.slice(0, 5).map(postId => {
           return <BlogPost key={postId} postId={postId} />

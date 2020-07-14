@@ -1,11 +1,12 @@
 import React from 'react';
 import { SearchFieldWrapper } from '../styles/SearchPostsStyles';
+import TextField from '@material-ui/core/TextField';
 
-export default function SearchPosts() {
+export default function SearchPosts({ filter, handleFilter }) {
 
   return <>
     <SearchFieldWrapper>
-      <input type="text" placeholder="Filter"></input>
+      <TextField label="Filter" value={filter} onChange={handleFilter} />
     </SearchFieldWrapper>
   </>
 }
