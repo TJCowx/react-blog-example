@@ -3,24 +3,23 @@
  * Handles the displaying of an individual blog post
  */
 
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostDescription, PostUrl } from '../../styles/BlogPostStyles';
 import { convertUnixTime } from '../../utils/convertUnixTime';
 import { PLACEHOLDER_IMAGE } from '../../constants/index';
+import { getImageUrl } from '../../services/HackerNewsAPI';
 
 export const BlogPost = memo(function BlogPost({ post }) {
+  const [imageUrl, setImageUrl] = useState(PLACEHOLDER_IMAGE);
 
-  let image;
-  // If there is an image, set it to that, otherwise set the image to a placeholder
-  if (post.imgUrl != null) {
-    image = <img src={post.imgUrl} alt={post.title}></img>
-  } else {
-    image = <img src={PLACEHOLDER_IMAGE} alt="Not Found"></img>
-  }
+  useEffect(() => {
+    getImageUrl(post.url).then(imgUrl => { setImageUrl(imgUrl) })
+    return () => { }
+  }, [])
 
   return <BlogPostWrapper>
     <PostImage>
-      {image}
+      <img src={imageUrl} alt="Not Found"></img>
     </PostImage>
     <PostDescription>
       <PostTitle>

@@ -20,10 +20,6 @@ export const getPost = async (postId) => {
     return null;
   }
 
-  getImageUrl(postRes.data.url).then((res) => {
-    postRes.data.imgUrl = res;
-  })
-
   return postRes.data;
 }
 
