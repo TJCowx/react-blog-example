@@ -6,8 +6,9 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { useState } from 'react';
 import ToggleTheme from './components/toggle-theme/ToggleTheme';
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./styles/Themes";
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './styles/Themes';
+import { useColourTheme } from './hooks/useColourTheme';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,11 +23,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, themeToggle] = useColourTheme();
 
-  const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
-  }
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   const classes = useStyles();
 
@@ -39,9 +38,9 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <ThemeProvider theme={themeMode}>
         <GlobalStyle />
-        <ToggleTheme theme={theme} toggleTheme={themeToggler} />
+        <ToggleTheme theme={theme} toggleTheme={themeToggle} />
         <BlogPosts />
       </ThemeProvider>
     </div>

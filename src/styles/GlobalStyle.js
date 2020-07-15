@@ -19,6 +19,7 @@ export const GlobalStyle = createGlobalStyle`
       color: ${({ theme }) => theme.text};
       font-family: "SofiaProWeb", Helvetica, Arial, sans-serif;
       font-size: 16px;
+      transition: all 0.50s linear;
     }
 
     ul {

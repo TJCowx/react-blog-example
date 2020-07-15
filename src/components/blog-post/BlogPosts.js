@@ -10,7 +10,8 @@ export default function BlogPosts() {
   const [postIds, setPostIds] = useState([]);
   const [availablePosts, setAvailablePosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const [filter, setFilter] = useState([]);
+  const [filter, setFilter] = useState('');
+  const [loading, setLoading] = useState(true);
 
   /** Handles the change to a filter */
   const handleFilter = (event) => {
@@ -21,6 +22,8 @@ export default function BlogPosts() {
    * Updates the pagination and increases the number of posts
    */
   const updatePagination = async () => {
+    // We're loading now so lets set the flag
+    setLoading(true);
     // Get the next 30 elements in the array and query for them.
     // Since we have the posts elsewhere we don't need them so splice works here
     const toFindIds = postIds.splice(0, PAGINATION_SIZE);
@@ -50,6 +53,8 @@ export default function BlogPosts() {
 
       setFilteredPosts(displayedPosts);
     }
+    // We're done loading, set the flag
+    setLoading(false);
   }
 
   // Reference to the last element in the list
@@ -60,7 +65,7 @@ export default function BlogPosts() {
   const lastPostRef = useCallback(node => {
     if (refObserver.current) refObserver.current.disconnect();
     refObserver.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
+      if (entries[0].isIntersecting && !loading && filter.length === 0) {
         updatePagination();
       }
     })
@@ -73,7 +78,7 @@ export default function BlogPosts() {
   }, [postIds])
 
   // Update the displayed posts if the available gets updated
-  useEffect(() => {
+  useEffect((res) => {
     updateDisplayedPosts();
   }, [availablePosts, filter])
 
