@@ -4,7 +4,7 @@
  */
 
 import React, { memo, useState, useEffect } from 'react';
-import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostDescription, PostUrl } from '../../styles/BlogPostStyles';
+import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostDescription, PostUrl } from './BlogPostStyles';
 import { convertUnixTime } from '../../utils/convertUnixTime';
 import { PLACEHOLDER_IMAGE } from '../../constants/index';
 import { getImageUrl } from '../../services/HackerNewsAPI';

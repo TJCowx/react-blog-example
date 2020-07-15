@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchFieldWrapper } from '../../styles/SearchPostsStyles';
+import { SearchFieldWrapper } from './SearchPostsStyles';
 import TextField from '@material-ui/core/TextField';
 
 export default function SearchPosts({ filter, handleFilter }) {

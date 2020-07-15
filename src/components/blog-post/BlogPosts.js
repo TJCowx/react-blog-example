@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { BlogPost } from './BlogPost';
 import { getNewPostIds, getMultiplePosts } from '../../services/HackerNewsAPI';
-import { BlogPostsWrapper, LoadMore } from '../../styles/BlogPostsStyles';
+import { BlogPostsWrapper, LoadMore } from './BlogPostsStyles';
 import SearchPosts from '../search-post/SearchPosts';
 import SubmitPost from '../submit-post/SubmitPost';
 import { PAGINATION_SIZE } from '../../constants/index';
@@ -91,7 +91,7 @@ export default function BlogPosts() {
       <SearchPosts filter={filter} handleFilter={handleFilter} />
       <SubmitPost />
       <ul>
-        {filteredPosts.map((post, index) => {
+        {filteredPosts.map((post) => {
           return <BlogPost key={post.id} post={post} />
         })}
       </ul>
