@@ -3,6 +3,7 @@ import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostD
 import { convertUnixTime } from '../../utils/convertUnixTime';
 import { PLACEHOLDER_IMAGE } from '../../constants/index';
 import { getImageUrl } from '../../services/HackerNewsAPI';
+import propTypes from 'prop-types';
 
 export const BlogPost = memo(function BlogPost({ post, theme }) {
   const [imageUrl, setImageUrl] = useState(PLACEHOLDER_IMAGE);
@@ -47,3 +48,8 @@ export const BlogPost = memo(function BlogPost({ post, theme }) {
     </PostDescription>
   </BlogPostWrapper>;
 });
+
+BlogPost.propTypes = {
+  theme: propTypes.string.isRequired,
+  post: propTypes.object.isRequired,
+}
