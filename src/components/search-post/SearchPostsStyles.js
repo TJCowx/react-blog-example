@@ -14,4 +14,5 @@ export const SearchField = styled.input`
   padding: 6px 0 7px;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   align-items: center;
+  outline: none;
 `;
