@@ -1,8 +1,3 @@
-/**
- * BlogPost.js
- * Handles the displaying of an individual blog post
- */
-
 import React, { memo, useState, useEffect } from 'react';
 import { BlogPostWrapper, PostTitle, PostInfo, PostInfoElement, PostImage, PostDescription, PostUrl } from './BlogPostStyles';
 import { convertUnixTime } from '../../utils/convertUnixTime';
@@ -12,6 +7,10 @@ import { getImageUrl } from '../../services/HackerNewsAPI';
 export const BlogPost = memo(function BlogPost({ post, theme }) {
   const [imageUrl, setImageUrl] = useState(PLACEHOLDER_IMAGE);
 
+  /**
+   * An effect that gets the image URL for this blog post.
+   * If there is an error or none is found, use the default placeholder image
+   */
   useEffect(() => {
     getImageUrl(post.url).then(imgUrl => {
       if (imgUrl == null || imgUrl.length === 0) {
@@ -33,10 +32,10 @@ export const BlogPost = memo(function BlogPost({ post, theme }) {
       </PostTitle>
       <PostInfo>
         <span>
-          <PostInfoElement>By:</PostInfoElement> {post.by}
+          <PostInfoElement theme={theme}>By:</PostInfoElement> {post.by}
         </span>
         <span>
-          <PostInfoElement>Posted:</PostInfoElement>
+          <PostInfoElement theme={theme}>Posted:</PostInfoElement>
           {convertUnixTime(post.time)}
         </span>
       </PostInfo>

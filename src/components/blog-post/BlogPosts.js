@@ -23,6 +23,7 @@ export default function BlogPosts() {
   const updatePagination = async () => {
     // We're loading now so lets set the flag
     setLoading(true);
+
     // Get the next 30 elements in the array and query for them.
     // Since we have the posts elsewhere we don't need them so splice works here
     const toFindIds = postIds.splice(0, PAGINATION_SIZE);

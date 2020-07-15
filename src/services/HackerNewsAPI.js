@@ -43,8 +43,10 @@ export const getMultiplePosts = async (postIds) => {
 }
 
 /**
- * Tries to get an image URL from a post
- * @param {*} postUrl The post URL to try and get an image from
+ * Tries to get an image URL from a post. There is an issue with the grabity
+ * package CORS errors very often and I can't find a solution to that. Other
+ * packages I have used returned similar errors 
+ * @param postUrl The post URL to try and get an image from
  */
 export const getImageUrl = async (postUrl) => {
   if (postUrl != null && postUrl.length > 0) {
