@@ -9,7 +9,7 @@ import { convertUnixTime } from '../../utils/convertUnixTime';
 import { PLACEHOLDER_IMAGE } from '../../constants/index';
 import { getImageUrl } from '../../services/HackerNewsAPI';
 
-export const BlogPost = memo(function BlogPost({ post }) {
+export const BlogPost = memo(function BlogPost({ post, theme }) {
   const [imageUrl, setImageUrl] = useState(PLACEHOLDER_IMAGE);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export const BlogPost = memo(function BlogPost({ post }) {
     return () => { }
   }, [])
 
-  return <BlogPostWrapper>
+  return <BlogPostWrapper theme={theme}>
     <PostImage>
       <img src={imageUrl} alt="Not Found"></img>
     </PostImage>

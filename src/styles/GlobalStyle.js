@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
       padding: 0;
       line-height: 1;
       background: ${({ theme }) => theme.body};
-      background: ${({ theme }) => theme.text};
+      color: ${({ theme }) => theme.text};
       font-family: "SofiaProWeb", Helvetica, Arial, sans-serif;
       font-size: 16px;
     }

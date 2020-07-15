@@ -7,6 +7,7 @@ export const BlogPostWrapper = styled.div`
   display: flex;
   max-width: 100%;
   flex-wrap: wrap;
+  color: ${({ theme }) => theme.text};
 
   heigh: initial;
   justify-content: flex-start;
@@ -44,6 +45,7 @@ export const PostDescription = styled.div`
   min-height: initial;
   float: right;
   flex-direction: column;
+  color: inherit;
 
   @media (min-width: 1024px) {
     margin-left: 4.16667%;
@@ -67,6 +69,7 @@ export const PostTitle = styled.h2`
   line-height: 1.5;
   font-weight: 400;
   text-decoration: none;
+  color: inherit;
   font-family: SofiaProWeb, Helvetica, Arial, sans-serif;
 
   @media(min-width: 1440px) {
@@ -82,7 +85,7 @@ export const PostTitle = styled.h2`
   }
 
   a {
-    color: #000;
+    color: inherit;
     text-decoration: none;
   }
 `;
@@ -90,6 +93,7 @@ export const PostTitle = styled.h2`
 export const PostInfo = styled.div`
   font-style: italic;
   line-height: 1.5;
+  color: inherit;
 
   span {
     display: inline-block;
@@ -103,7 +107,7 @@ export const PostInfo = styled.div`
 
 export const PostInfoElement = styled.span`
   font-weight: bold;
-  color: ${props => props.color || '#000'};
+  color: ${({ theme }) => theme.text};
 `;
 
 export const PostUrl = styled.div`
@@ -114,9 +118,10 @@ export const PostUrl = styled.div`
   letter-spacing: 0.125em;
   font-family: SofiaProWeb, Helvetica, Arial, sans-serif;
   line-height: 1;
+  color: inherit;
 
   a {
-    color: #000;
+    color: inherit;
     text-decoration: none;
     border-bottom: 0.125rem solid;
   }
