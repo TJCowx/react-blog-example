@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SearchFieldWrapper = styled.div`
-  margin-bottom: inherit;
+  margin-bottom: 20px;
 `;
 
 export const SearchField = styled.input`
