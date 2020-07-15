@@ -46,7 +46,7 @@ export default function BlogPosts() {
       // Look through all the available posts to see if we have a match
       // and ignore casing when looking for it
       for (let i = 0; i < availablePosts.length; i++) {
-        if (availablePosts[i].title.toLowerCase().indexOf(filter) > -1) {
+        if (availablePosts[i].title.toLowerCase().indexOf(filter.toLowerCase()) > -1) {
           displayedPosts.push(availablePosts[i])
         }
       }
