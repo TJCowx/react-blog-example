@@ -1,5 +1,6 @@
 A ReactJS web application that gets articles from the HackerNewsAPI and lists them in newest first order. 
 
+Currently there is an issue with grabity that CORS errors more often then not when trying to get an image, not sure if it's something in the code-base or grabity is just getting rejected.
 
 ## Available Scripts
 
