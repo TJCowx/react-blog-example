@@ -2,6 +2,8 @@ A ReactJS web application that gets articles from the HackerNewsAPI and lists th
 
 Currently there is an issue with grabity that CORS errors more often then not when trying to get an image, not sure if it's something in the code-base or grabity is just getting rejected.
 
+https://tcowx-hacker-news-blog.herokuapp.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
